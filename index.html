@@ -1,0 +1,88 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOVE UNIYAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Love Uniyal</h1>
+      <ul>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </ul>
+    </header>
+    <main>
+      <!-- Hero Image -->
+      <section class="hero_section">
+        <div class="hero_title">
+          <div>Apassionate <span id="element"></span></div>
+        </div>
+
+        <div class="hero_image">
+          <img src="./assets/hero_logo.png" alt="image" />
+        </div>
+      </section>
+      <hr />
+      <!-- About Section -->
+      <section class="base_section">
+        <div class="about_image">
+          <img src="./assets/portrait.jpg" alt="image" />
+        </div>
+
+        <div class="about_content" id="#about">
+          <p>
+            <span>I am</span>
+            a B.Tech student with a passion for creating user-friendly and
+            visually appealing web applications. I'm always eager to learn new
+            things, and that's what drew me to web development. In my free time,
+            I love exploring the beauty of nature.
+          </p>
+        </div>
+      </section>
+      <section class="skills" id="#skills">
+        <h3>Web designing</h3>
+        <h3>Thumbnail designing</h3>
+        <h3>Video editing</h3>
+        <h3>Effective communication</h3>
+      </section>
+      <hr />
+      <section class="projects">
+        <div>
+          <h1>Pokedex</h1>
+          <p>Gets image and data about any pokemon</p>
+          <a href="./pokemon.html" target="_blank">Check out</a>
+        </div>
+        <div>
+          <h1>Todo App</h1>
+          <p>A todos app to manage your daily tasks!</p>
+          <a href="./todo.html" target="_blank">Check out</a>
+        </div>
+      </section>
+      <footer id="#contact">
+        <h1>Contact me</h1>
+        <br />
+        <p>Download my Resume :</p>
+        <p>Email : loveuniyal381984@gmail.com</p>
+        <p>Ph no : 8076336836</p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+      var typed = new Typed("#element", {
+        strings: ["<i>Thumbnail Designer </i> .", "&amp; Web developer."],
+        typeSpeed: 50,
+      });
+    </script>
+  </body>
+</html>

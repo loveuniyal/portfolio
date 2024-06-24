@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Info Finder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+      }
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input[type="text"] {
+        width: calc(100% - 24px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .pokemon-info {
+        margin-top: 20px;
+      }
+      .pokemon-info img {
+        width: 150px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pokémon Info Finder</h1>
+      <input type="text" id="pokemonName" placeholder="Enter Pokémon name" />
+      <button onclick="getPokemonInfo()">Get Info</button>
+      <div id="pokemonInfo" class="pokemon-info"></div>
+    </div>
+    <script>
+      async function getPokemonInfo() {
+        const pokemonName = document
+          .getElementById("pokemonName")
+          .value.toLowerCase();
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
+        );
+        const data = await response.json();
+
+        const pokemonInfoDiv = document.getElementById("pokemonInfo");
+        pokemonInfoDiv.innerHTML = `
+                <h2>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>
+                <img src="${data.sprites.front_default}" alt="${data.name}">
+                <p><strong>Height:</strong> ${data.height}</p>
+                <p><strong>Weight:</strong> ${data.weight}</p>
+                <p><strong>Type:</strong> ${data.types.map((type) => type.type.name).join(", ")}</p>
+            `;
+      }
+    </script>
+  </body>
+</html>

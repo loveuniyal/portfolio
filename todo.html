@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      select {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .todo-list {
+        list-style: none;
+        padding: 0;
+      }
+      .todo-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px 0;
+      }
+      .todo-item span {
+        flex: 1;
+        margin-left: 10px;
+      }
+      .todo-item button {
+        margin-left: 5px;
+      }
+      .priority-low {
+        background-color: #d4edda;
+      }
+      .priority-medium {
+        background-color: #fff3cd;
+      }
+      .priority-high {
+        background-color: #f8d7da;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do App</h1>
+      <input type="text" id="taskInput" placeholder="Enter your task" />
+      <select id="prioritySelect">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button onclick="addTask()">Add Task</button>
+      <ul id="todoList" class="todo-list"></ul>
+    </div>
+    <script>
+      function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const prioritySelect = document.getElementById("prioritySelect");
+        const todoList = document.getElementById("todoList");
+
+        const task = taskInput.value.trim();
+        const priority = prioritySelect.value;
+
+        if (task === "") return;
+
+        const li = document.createElement("li");
+        li.className = `todo-item priority-${priority}`;
+
+        const span = document.createElement("span");
+        span.textContent = task;
+
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.onclick = () => editTask(li, span);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = () => deleteTask(li);
+
+        li.appendChild(span);
+        li.appendChild(editButton);
+        li.appendChild(deleteButton);
+
+        todoList.appendChild(li);
+
+        taskInput.value = "";
+      }
+
+      function editTask(li, span) {
+        const newTask = prompt("Edit your task", span.textContent);
+        if (newTask !== null && newTask.trim() !== "") {
+          span.textContent = newTask.trim();
+        }
+      }
+
+      function deleteTask(li) {
+        li.remove();
+      }
+    </script>
+  </body>
+</html>
